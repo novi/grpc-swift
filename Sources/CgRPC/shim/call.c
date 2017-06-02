@@ -43,6 +43,10 @@ void cgrpc_call_destroy(cgrpc_call *call) {
   free(call);
 }
 
+int cgrpc_handler_call_is_valid(cgrpc_handler *h) {
+    return h->server_call;
+}
+
 grpc_call_error cgrpc_call_perform(cgrpc_call *call, cgrpc_operations *operations, int64_t tag) {
   grpc_call_error error = grpc_call_start_batch(call->call,
                                                 operations->ops,

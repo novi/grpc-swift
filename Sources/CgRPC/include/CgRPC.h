@@ -168,6 +168,8 @@ const char *cgrpc_handler_host(cgrpc_handler *h);
 const char *cgrpc_handler_method(cgrpc_handler *h);
 const char *cgrpc_handler_call_peer(cgrpc_handler *h);
 
+int cgrpc_handler_call_is_valid(cgrpc_handler *h);
+
 // call support
 void cgrpc_call_destroy(cgrpc_call *call);
 grpc_call_error cgrpc_call_perform(cgrpc_call *call, cgrpc_operations *operations, int64_t tag);
