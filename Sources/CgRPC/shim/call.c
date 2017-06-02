@@ -44,7 +44,7 @@ void cgrpc_call_destroy(cgrpc_call *call) {
 }
 
 int cgrpc_handler_call_is_valid(cgrpc_handler *h) {
-    return h->server_call;
+    return h->server_call != NULL;
 }
 
 grpc_call_error cgrpc_call_perform(cgrpc_call *call, cgrpc_operations *operations, int64_t tag) {
