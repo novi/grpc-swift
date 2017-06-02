@@ -94,7 +94,9 @@ public class Server {
                   }
                 }
                 // call the handler function on the server thread
-                handlerFunction(handler)
+                if handler.hasValidCall {
+                    handlerFunction(handler)
+                }
               }
             } else if event.tag == 0 {
               running = false // exit the loop

@@ -65,8 +65,12 @@ public class Handler {
     completionQueue.name = "Handler"
   }
 
+    var hasValidCall: Bool {
+        return cgrpc_handler_call_is_valid(underlyingHandler) > 0
+    }
+    
   deinit {
-    cgrpc_handler_destroy(self.underlyingHandler)
+    //cgrpc_handler_destroy(self.underlyingHandler)
   }
 
   /// Requests a call for the handler
