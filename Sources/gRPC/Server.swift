@@ -75,7 +75,7 @@ public class Server {
           let handler = Handler(underlyingServer:self.underlyingServer)
           try handler.requestCall(tag:101)
           // block while waiting for an incoming request
-          let event = self.completionQueue.wait(timeout:600)
+          let event = self.completionQueue.wait(timeout: -1)
           if (event.type == .complete) {
             if event.tag == 101 {
               // run the handler and remove it when it finishes
