@@ -1,11 +1,10 @@
+LDFLAGS = -Xlinker -lz -Xlinker -L/usr/local/opt/openssl/lib -Xlinker -lssl -Xlinker -lcrypto
 
-CFLAGS = -Xcc -ISources/BoringSSL/include
-
-#LDFLAGS = -Xlinker -lz 
+CFLAGS = -Xcc -I/usr/local/opt/openssl/include
 
 all:
 	swift package generate-xcodeproj
-	swift build -v $(CFLAGS) $(LDFLAGS)
+	swift build $(CFLAGS) $(LDFLAGS)
 	
 test:
 	swift build -v $(CFLAGS) $(LDFLAGS)
