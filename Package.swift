@@ -24,5 +24,6 @@ let package = Package(
            dependencies: []),
   ],
   dependencies: [
+      .Package(url: "https://github.com/IBM-Swift/OpenSSL.git", majorVersion: 0, minor: 3),
   ]
 )
