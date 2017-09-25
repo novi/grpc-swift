@@ -1,3 +1,4 @@
+// swift-tools-version:4.0
 /*
  * Copyright 2017, gRPC Authors All rights reserved.
  *
@@ -17,13 +18,20 @@ import PackageDescription
 
 let package = Package(
   name: "SwiftGRPC",
-  targets: [
-    Target(name: "gRPC",
-           dependencies: ["CgRPC"]),
-    Target(name: "CgRPC",
-           dependencies: []),
+  products: [
+    .library(name: "gRPC", targets: ["gRPC"]),
   ],
   dependencies: [
-      .Package(url: "https://github.com/IBM-Swift/OpenSSL.git", majorVersion: 0, minor: 3),
+    .package(url: "https://github.com/IBM-Swift/OpenSSL.git", .upToNextMinor(from: "0.3.0") ),
+  ],
+  targets: [
+    .target(name: "CgRPC"),
+    .target(name: "gRPC",
+            dependencies: ["CgRPC"]
+    ),
+    .testTarget(
+        name: "gRPCTests",
+        dependencies: [.target(name: "gRPC")]
+    ),
   ]
 )
