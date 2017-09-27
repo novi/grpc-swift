@@ -16,16 +16,22 @@
  */
 import PackageDescription
 
+var dependencies: [Package.Dependency] = [
+    .package(url: "https://github.com/novi/CZlib.git", .branch("pkgconfig-zlib"))
+]
+
+#if os(Linux)
+dependencies.append(.package(url: "https://github.com/IBM-Swift/OpenSSL.git", .upToNextMinor(from: "0.3.0") ))
+#else
+dependencies.append(.package(url: "https://github.com/quanvo87/OpenSSL-OSX.git", .branch("swift4")) )
+#endif
+
 let package = Package(
   name: "SwiftGRPC",
   products: [
     .library(name: "gRPC", targets: ["gRPC"]),
   ],
-  dependencies: [
-      //.package(url: "https://github.com/IBM-Swift/OpenSSL.git", .upToNextMinor(from: "0.3.0") ),
-      .package(url: "https://github.com/quanvo87/OpenSSL-OSX.git", .branch("swift4")),
-      .package(url: "https://github.com/novi/CZlib.git", .branch("pkgconfig-zlib"))
-  ],
+  dependencies: dependencies,
   targets: [
     .target(name: "CgRPC", dependencies: [
         "OpenSSL",
