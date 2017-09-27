@@ -1,17 +1,19 @@
-LDFLAGS = -Xlinker -lz -Xlinker -L/usr/local/opt/openssl/lib -Xlinker -lssl -Xlinker -lcrypto
+LDFLAGS =
 
-CFLAGS = -Xcc -I/usr/local/opt/openssl/include
+CFLAGS =
 
-all:
-	swift package generate-xcodeproj
+all: genxcode
 	swift build $(CFLAGS) $(LDFLAGS)
 	
 test:
-	swift build -v $(CFLAGS) $(LDFLAGS)
-	swift test -v $(CFLAGS) $(LDFLAGS) 
+	swift build $(CFLAGS) $(LDFLAGS)
+	swift test $(CFLAGS) $(LDFLAGS) 
 
 clean:
 	rm -rf Packages
 	rm -rf .build
 	rm -rf SwiftGRPC.xcodeproj
-	rm -rf Package.pins
+	rm -rf Package.resolved
+
+genxcode:
+	swift package generate-xcodeproj --xcconfig-overrides=Config.xcconfig

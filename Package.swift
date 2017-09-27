@@ -24,7 +24,7 @@ let package = Package(
   dependencies: [
       //.package(url: "https://github.com/IBM-Swift/OpenSSL.git", .upToNextMinor(from: "0.3.0") ),
       .package(url: "https://github.com/quanvo87/OpenSSL-OSX.git", .branch("swift4")),
-      .package(url: "https://github.com/IBM-Swift/CZlib.git", .upToNextMinor(from: "0.1.0"))
+      .package(url: "https://github.com/novi/CZlib.git", .branch("pkgconfig-zlib"))
   ],
   targets: [
     .target(name: "CgRPC", dependencies: [
