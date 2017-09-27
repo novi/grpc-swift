@@ -15,7 +15,13 @@
  */
 #if SWIFT_PACKAGE
   import CgRPC
+  import OpenSSL
 #endif
+
+#if SWIFT_PACKAGE && os(Linux)
+import CZlib
+#endif
+
 import Foundation // for String.Encoding
 
 /// Initializes gRPC system
