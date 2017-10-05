@@ -22,13 +22,27 @@
 import Foundation // for String.Encoding
 
 /// Initializes gRPC system
+fileprivate var isInitialized: Bool = false
+fileprivate var initializerMutex = Mutex()
 public func initialize() {
-  grpc_init()
+    initializerMutex.synchronize {
+        guard isInitialized == false else {
+            return
+        }
+        grpc_init()
+        isInitialized = true
+    }
+  
 }
 
 /// Shuts down gRPC system
 public func shutdown() {
-  grpc_shutdown()
+    initializerMutex.synchronize {
+        if isInitialized {
+            grpc_shutdown()
+            isInitialized = false
+        }
+    }
 }
 
 /// Returns version of underlying gRPC library
