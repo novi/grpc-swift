@@ -87,7 +87,7 @@ func main() throws {
     if file.service.count > 0 {
 
       // generate separate implementation files for client and server
-      let context : [String:Any] = ["file": file, "access": "internal"]
+      let context : [String:Any] = ["file": file, "access": "public"]
 
       do {
         let clientFileName = package + ".client.pb.swift"
