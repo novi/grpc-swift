@@ -20,7 +20,7 @@
       sem.signal()
     }
     _ = sem.wait(timeout: DispatchTime.distantFuture)
-    if let returnResponse = returnResponse, returnCallResult.statusCode == 0 {
+    if let returnResponse = returnResponse, returnCallResult.statusCode == .ok {
       return returnResponse
     } else {
       throw {{ .|clienterror:file,service }}.error(c: returnCallResult)
