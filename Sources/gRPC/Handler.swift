@@ -205,13 +205,11 @@ public class Handler {
   /// - Parameter message: the message to send
   /// - Parameter completion: a completion handler to call after the response has been sent
   public func sendResponse(message: Data,
-                           completion: @escaping () throws -> Void) throws -> Void {
+                           completion: @escaping (Bool) throws -> Void) throws -> Void {
     let operations = OperationGroup(call:call,
                                     operations:[.sendMessage(ByteBuffer(data:message))])
     {(operationGroup) in
-      if operationGroup.success {
-        try completion()
-      }
+      try completion(operationGroup.success)
     }
     try call.perform(operations)
   }
