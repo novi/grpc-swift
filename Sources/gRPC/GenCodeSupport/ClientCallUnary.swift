@@ -36,7 +36,7 @@ open class ClientCallUnaryBase<InputType: Message, OutputType: Message>: ClientC
       sem.signal()
     }
     _ = sem.wait(timeout: DispatchTime.distantFuture)
-    if let returnResponse = returnResponse {
+    if let returnResponse = returnResponse, returnCallResult.statusCode == .ok {
       return returnResponse
     } else {
       throw ClientError.error(c: returnCallResult)
