@@ -22,7 +22,7 @@ let package = Package(
     .library(name: "gRPC", targets: ["gRPC"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/vapor/ctls.git", .upToNextMinor(from: "1.1.2") ),
+    .package(url: "https://github.com/vapor-community/copenssl.git", .exact("1.0.0-rc.1")),
   ],
   targets: [
     .target(name: "CgRPC"),
