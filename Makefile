@@ -1,5 +1,5 @@
 
-CFLAGS = -Xcc -ISources/BoringSSL/include
+CFLAGS = 
 
 all:
 	swift package generate-xcodeproj
