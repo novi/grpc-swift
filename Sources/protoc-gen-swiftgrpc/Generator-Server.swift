@@ -135,7 +135,7 @@ extension Generator {
   private func printServerMethodUnary() {
     println("\(access) protocol \(methodSessionName): ServerSessionUnary {}")
     println()
-    println("fileprivate final class \(methodSessionName)Base: ServerSessionUnaryBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
+    println("public final class \(methodSessionName)Base: ServerSessionUnaryBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
     if options.generateTestStubs {
       println()
       println("class \(methodSessionName)TestStub: ServerSessionUnaryTestStub, \(methodSessionName) {}")
@@ -161,7 +161,7 @@ extension Generator {
     outdent()
     println("}")
     println()
-    println("fileprivate final class \(methodSessionName)Base: ServerSessionClientStreamingBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
+    println("public final class \(methodSessionName)Base: ServerSessionClientStreamingBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
     if options.generateTestStubs {
       println()
       println("class \(methodSessionName)TestStub: ServerSessionClientStreamingTestStub<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
@@ -183,7 +183,7 @@ extension Generator {
     outdent()
     println("}")
     println()
-    println("fileprivate final class \(methodSessionName)Base: ServerSessionServerStreamingBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
+    println("public final class \(methodSessionName)Base: ServerSessionServerStreamingBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
     if options.generateTestStubs {
       println()
       println("class \(methodSessionName)TestStub: ServerSessionServerStreamingTestStub<\(methodOutputName)>, \(methodSessionName) {}")
@@ -201,7 +201,7 @@ extension Generator {
     outdent()
     println("}")
     println()
-    println("fileprivate final class \(methodSessionName)Base: ServerSessionBidirectionalStreamingBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
+    println("public final class \(methodSessionName)Base: ServerSessionBidirectionalStreamingBase<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
     if options.generateTestStubs {
       println()
       println("class \(methodSessionName)TestStub: ServerSessionBidirectionalStreamingTestStub<\(methodInputName), \(methodOutputName)>, \(methodSessionName) {}")
